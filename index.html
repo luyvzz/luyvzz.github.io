@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="鹿屿の博客，luyvzz 的个人资料、具身智能、AI、嵌入式、机器人视觉、开源项目与个人随笔。" />
-  <meta name="theme-color" content="#05130f" />
-  <meta property="og:title" content="鹿屿の博客 | luyvzz" />
+  <meta name="theme-color" content="#020806" />
+  <meta property="og:title" content="鹿屿の博客 | Embodied AI Lab" />
   <meta property="og:description" content="一个大学生开发者的具身智能、AI 与开源项目实验场。" />
   <meta property="og:image" content="assets/images/hero-embodied-ai-lab.webp" />
   <title>鹿屿の博客 | Embodied AI Lab</title>
@@ -14,82 +14,89 @@
 </head>
 <body>
   <canvas id="neuralCanvas" aria-hidden="true"></canvas>
+  <div class="atmosphere" aria-hidden="true"></div>
+  <div class="cursor-light" aria-hidden="true"></div>
   <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="topbar" aria-label="顶部导航">
+    <a class="brandmark" href="#home" data-route="home"><span>鹿屿</span><small>Embodied AI</small></a>
+    <nav class="top-nav" aria-label="站点导航">
+      <a href="#home" data-route="home">Home</a>
+      <a href="#posts" data-route="posts">Notes</a>
+      <a href="#projects" data-route="projects">Builds</a>
+      <a href="#about" data-route="about">About</a>
+      <a href="#archives" data-route="archives">Timeline</a>
+      <a href="#friends" data-route="friends">Links</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="切换深色模式">MODE</button>
+  </header>
+
   <div class="shell">
-    <aside class="profile-card" aria-label="个人资料">
-      <div class="avatar-frame">
+    <aside class="profile-card reveal" aria-label="个人资料">
+      <div class="avatar-frame orbital-avatar">
         <img src="assets/images/avatar-gpt-image-2.webp" alt="luyvzz 的猫咪头像，gpt-image-2 赛博具身智能风格" />
-        <span class="scan-line" aria-hidden="true"></span>
+        <span class="scan-line kinetic-scan" aria-hidden="true"></span>
       </div>
-      <p class="eyebrow">luyvzz · embodied ai</p>
+      <p class="eyebrow">luyvzz / embodied intelligence</p>
       <h1>鹿屿の博客</h1>
-      <p class="subtitle">具身智能 × AI × 嵌入式 × 机器人视觉</p>
-      <p class="bio">我把这个站点当作一个小型控制台。项目、随笔、调试记录和阶段性想法都会放进来，慢慢连成自己的开源生态。</p>
+      <p class="subtitle">AI × Embodied Agents × Robot Vision</p>
+      <p class="bio">这里不是普通个人主页，而是一个持续进化的个人实验室：把模型、传感器、嵌入式系统和开源工具连接到真实世界。</p>
       <div class="profile-actions">
-        <a class="button primary" href="https://github.com/luyvzz">GitHub</a>
-        <a class="button ghost" href="#projects" data-route="projects">看项目</a>
+        <a class="button primary magnetic" href="https://github.com/luyvzz">GitHub</a>
+        <a class="button ghost magnetic" href="#projects" data-route="projects">看项目</a>
       </div>
-      <nav class="site-nav" aria-label="站点导航">
-        <a href="#home" data-route="home">首页</a>
-        <a href="#posts" data-route="posts">随笔</a>
-        <a href="#projects" data-route="projects">项目</a>
-        <a href="#about" data-route="about">关于</a>
-        <a href="#archives" data-route="archives">归档</a>
-        <a href="#friends" data-route="friends">友链</a>
-      </nav>
-      <button class="theme-toggle" type="button" aria-label="切换深色模式">🌗 切换主题</button>
     </aside>
 
     <main id="main" class="content" tabindex="-1">
       <section id="home" class="view active" aria-labelledby="home-title">
-        <article class="hero-card terminal-card">
+        <article class="hero-card terminal-card reveal">
           <div class="hero-copy">
-            <p class="eyebrow">Personal Weblog / Lab Console</p>
-            <h2 id="home-title">把想法接到现实世界的传感器上</h2>
-            <p>这里记录我怎样学习 AI、嵌入式和机器人视觉，也记录那些把一个小工具做成开源项目的过程。页面会像项目一样迭代。</p>
-            <div class="hero-meta"><span>大学生开发者</span><span>具身智能学习中</span><span>gpt-image-2 visual</span><span>MCP connected</span></div>
+            <p class="eyebrow">Personal Lab / AI Control Surface</p>
+            <h2 id="home-title" class="kinetic-title">让 AI 长出感知、记忆与行动</h2>
+            <p class="lead">我在这里记录具身智能、AI、嵌入式和机器人视觉的学习与构建：从一个工具、一段调试日志，到真正能被别人理解的开源作品。</p>
+            <div class="hero-meta"><span>Embodied AI</span><span>Robot Vision</span><span>Edge Compute</span><span>Open Source</span></div>
           </div>
           <div class="hero-visual" aria-label="具身智能控制台示意图">
-            <div class="hud-top"><span>LUYU.OS</span><span>GPT-IMAGE-2</span></div>
-            <div class="model-badge">MCP / MICUAPI / VISION ONLINE</div>
+            <div class="hud-top"><span>LUYU.OS</span><span>ONLINE</span></div>
+            <div class="model-badge">GPT-IMAGE-2 / MCP VISUAL PIPELINE</div>
             <div class="sensor-core"><img src="assets/images/avatar-gpt-image-2.webp" alt="gpt-image-2 生成的猫咪具身智能头像" /></div>
             <div class="signal-bars"><i></i><i></i><i></i><i></i><i></i></div>
-            <pre>vision.stream  online
-image.model    gpt-image-2
-robot.policy   learning
-edge.compute   warm</pre>
+            <pre>vision.stream   online
+image.model     gpt-image-2
+robot.policy    learning
+world.memory    syncing</pre>
           </div>
         </article>
 
-        <section class="section-block" aria-labelledby="latest-title">
-          <div class="section-heading"><h2 id="latest-title">最近文章</h2><a href="#posts" data-route="posts">查看全部</a></div>
+        <section class="section-block reveal" aria-labelledby="latest-title">
+          <div class="section-heading"><p class="section-kicker">01 / Thought Stream</p><h2 id="latest-title">最近文章</h2><a href="#posts" data-route="posts">查看全部</a></div>
           <div class="post-list" id="latest-posts"></div>
         </section>
-        <section class="section-block" aria-labelledby="project-title">
-          <div class="section-heading"><h2 id="project-title">项目展台</h2><a href="#projects" data-route="projects">更多项目</a></div>
+        <section class="section-block reveal" aria-labelledby="project-title">
+          <div class="section-heading"><p class="section-kicker">02 / Build Log</p><h2 id="project-title">项目展台</h2><a href="#projects" data-route="projects">更多项目</a></div>
           <div class="project-grid" id="home-projects"></div>
         </section>
       </section>
 
       <section id="posts" class="view" aria-labelledby="posts-title">
-        <div class="section-heading page-heading"><div><p class="eyebrow">Essays</p><h2 id="posts-title">个人随笔</h2></div><label class="search-box"><span>搜索</span><input id="searchInput" type="search" placeholder="输入具身智能、AI、机器人视觉..." /></label></div>
+        <div class="section-heading page-heading reveal"><div><p class="section-kicker">Essays</p><h2 id="posts-title">个人随笔</h2></div><label class="search-box"><span>搜索</span><input id="searchInput" type="search" placeholder="输入具身智能、AI、机器人视觉..." /></label></div>
         <div class="post-list" id="all-posts"></div>
       </section>
-      <section id="projects" class="view" aria-labelledby="projects-title"><p class="eyebrow">Open Source Lab</p><h2 id="projects-title">开源项目</h2><div class="project-grid" id="all-projects"></div></section>
-      <section id="about" class="view" aria-labelledby="about-title"><p class="eyebrow">About</p><h2 id="about-title">关于我</h2><article class="article-card prose"><p>你好，我是 luyvzz，一名正在搭建个人开源生态的大学生开发者。</p><p>我目前关注具身智能、AI、嵌入式和机器人视觉。这个博客会放一些个人资料，也会记录项目从想法到能跑起来的过程。</p><p>这个站点和 GitHub 主页一起组成我的公开入口。面试官可以从这里看到我做过什么，开发者可以从这里找到项目背景，我自己也可以回头看每一次折腾留下了什么。</p></article></section>
-      <section id="archives" class="view" aria-labelledby="archives-title"><p class="eyebrow">Timeline</p><h2 id="archives-title">归档</h2><div class="timeline" id="archive-list"></div></section>
-      <section id="tags" class="view" aria-labelledby="tags-title"><p class="eyebrow">Tags</p><h2 id="tags-title">标签</h2><div class="tag-cloud" id="tag-cloud"></div></section>
-      <section id="friends" class="view" aria-labelledby="friends-title"><p class="eyebrow">Links</p><h2 id="friends-title">友链</h2><div class="project-grid"><article class="project-card"><span class="project-icon">🧭</span><h3>zuoliangyu</h3><p>这个博客视觉方向的参考站点。</p><a href="https://zuoliangyu.github.io/">访问站点</a></article><article class="project-card"><span class="project-icon">🐙</span><h3>luyvzz GitHub</h3><p>我的开源项目和 Profile 首页。</p><a href="https://github.com/luyvzz">访问 GitHub</a></article></div></section>
+      <section id="projects" class="view" aria-labelledby="projects-title"><div class="section-heading reveal"><p class="section-kicker">Open Source Lab</p><h2 id="projects-title">开源项目</h2></div><div class="project-grid" id="all-projects"></div></section>
+      <section id="about" class="view" aria-labelledby="about-title"><div class="section-heading reveal"><p class="section-kicker">About</p><h2 id="about-title">关于我</h2></div><article class="article-card prose reveal"><p>你好，我是 luyvzz，一名正在搭建个人开源生态的大学生开发者。</p><p>我目前关注具身智能、AI、嵌入式和机器人视觉。这个博客会放一些个人资料，也会记录项目从想法到能跑起来的过程。</p><p>这个站点和 GitHub 主页一起组成我的公开入口。面试官可以从这里看到我做过什么，开发者可以从这里找到项目背景，我自己也可以回头看每一次折腾留下了什么。</p></article></section>
+      <section id="archives" class="view" aria-labelledby="archives-title"><div class="section-heading reveal"><p class="section-kicker">Timeline</p><h2 id="archives-title">归档</h2></div><div class="timeline" id="archive-list"></div></section>
+      <section id="tags" class="view" aria-labelledby="tags-title"><div class="section-heading reveal"><p class="section-kicker">Tags</p><h2 id="tags-title">标签</h2></div><div class="tag-cloud" id="tag-cloud"></div></section>
+      <section id="friends" class="view" aria-labelledby="friends-title"><div class="section-heading reveal"><p class="section-kicker">Links</p><h2 id="friends-title">友链</h2></div><div class="project-grid"><article class="project-card reveal"><span class="project-icon">↗</span><h3>zuoliangyu</h3><p>这个博客视觉方向的参考站点。</p><a href="https://zuoliangyu.github.io/">访问站点</a></article><article class="project-card reveal"><span class="project-icon">⌘</span><h3>luyvzz GitHub</h3><p>我的开源项目和 Profile 首页。</p><a href="https://github.com/luyvzz">访问 GitHub</a></article></div></section>
     </main>
 
-    <aside class="right-rail" aria-label="侧边信息">
-      <section class="widget status-widget"><h2>系统状态</h2><p><span></span> lab online</p><p><span></span> writing buffer ready</p><p><span></span> sensor notes syncing</p></section>
-      <section class="widget"><h2>站内搜索</h2><input id="railSearch" type="search" placeholder="搜索文章和项目" /></section>
-      <section class="widget"><h2>正在做</h2><ul class="clean-list"><li>整理 GitHub 开源生态</li><li>学习具身智能与机器人视觉</li><li>把小工具包装成作品</li></ul></section>
-      <section class="widget"><h2>标签</h2><div class="mini-tags" id="rail-tags"></div></section>
+    <aside class="right-rail reveal" aria-label="侧边信息">
+      <section class="widget status-widget"><h2>Telemetry</h2><p><span></span> lab online</p><p><span></span> vision buffer ready</p><p><span></span> agent memory syncing</p></section>
+      <section class="widget"><h2>Search</h2><input id="railSearch" type="search" placeholder="搜索文章和项目" /></section>
+      <section class="widget"><h2>Now</h2><ul class="clean-list"><li>整理 GitHub 开源生态</li><li>学习具身智能与机器人视觉</li><li>把小工具包装成作品</li></ul></section>
+      <section class="widget"><h2>Tags</h2><div class="mini-tags" id="rail-tags"></div></section>
     </aside>
   </div>
-  <footer class="footer"><span>© 2026 鹿屿の博客</span><span>Built like a tiny embodied AI lab.</span></footer>
+  <footer class="footer"><span>© 2026 鹿屿の博客</span><span>Embodied AI notes from sensors to software.</span></footer>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

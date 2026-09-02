@@ -14,7 +14,7 @@
 
 ## 视觉方向
 
-网站采用极客控制台风格，主色使用青绿色和琥珀色。头像来自 `assets/images/avatar.jpg`，并通过已配置的 `micu-gpt-image-2` MCP 调用中转站 gpt-image-2 生成新版视觉资产：`assets/images/avatar-gpt-image-2.png`、`assets/images/avatar-gpt-image-2.webp`、`assets/images/avatar-gpt-image-2-icon.png`、`assets/images/hero-embodied-ai-lab.png`、`assets/images/hero-embodied-ai-lab.webp`。
+网站采用去框化高级界面、极客控制台风格和沉浸式具身智能视觉，主色使用青绿色和琥珀色。头像来自 `assets/images/avatar.jpg`，并通过已配置的 `micu-gpt-image-2` MCP 调用中转站 gpt-image-2 生成新版视觉资产：`assets/images/avatar-gpt-image-2.png`、`assets/images/avatar-gpt-image-2.webp`、`assets/images/avatar-gpt-image-2-icon.png`、`assets/images/hero-embodied-ai-lab.png`、`assets/images/hero-embodied-ai-lab.webp`。
 
 ## MCP 图像链路
 
@@ -47,3 +47,12 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-SiteQuality.ps1
 ## License
 
 MIT
+
+## 交互动效
+
+- 全局神经网络 Canvas 背景
+- 鼠标跟随光晕 `cursor-light`
+- 滚动入场 `reveal`
+- 按钮与项目的磁吸交互 `magnetic`
+- 头像轨道、扫描线、信号条和系统状态动效
+- 减少传统卡片/边框结构，用开放式排版和细线层次提升高级感

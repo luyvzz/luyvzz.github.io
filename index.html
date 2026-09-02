@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="鹿屿の博客，luyvzz 的个人资料、开源项目、技术笔记与个人随笔。" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>鹿屿の博客 | luyvzz</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <div class="shell">
+    <aside class="profile-card" aria-label="个人资料">
+      <div class="avatar" aria-hidden="true">鹿</div>
+      <p class="eyebrow">luyvzz</p>
+      <h1>鹿屿の博客</h1>
+      <p class="subtitle">AI × 嵌入式 × 机器人视觉</p>
+      <p class="bio">这里放我的个人资料、开源项目、工程笔记和一些慢慢写下来的随笔。代码会变，想法也会变，我把变化留下来。</p>
+      <div class="profile-actions">
+        <a class="button primary" href="https://github.com/luyvzz">GitHub</a>
+        <a class="button ghost" href="#about" data-route="about">关于我</a>
+      </div>
+      <nav class="site-nav" aria-label="站点导航">
+        <a href="#home" data-route="home">首页</a>
+        <a href="#posts" data-route="posts">随笔</a>
+        <a href="#projects" data-route="projects">项目</a>
+        <a href="#archives" data-route="archives">归档</a>
+        <a href="#tags" data-route="tags">标签</a>
+        <a href="#friends" data-route="friends">友链</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="切换深色模式">🌗 切换主题</button>
+    </aside>
+
+    <main id="main" class="content" tabindex="-1">
+      <section id="home" class="view active" aria-labelledby="home-title">
+        <article class="hero-card">
+          <p class="eyebrow">Personal Weblog</p>
+          <h2 id="home-title">把学习、项目和生活里的小片段放在这里</h2>
+          <p>我想要一个能长期写下去的地方。它可以展示简历里放不下的过程，也可以记录某天把一个 bug 修掉以后留下的想法。</p>
+          <div class="hero-meta"><span>大学生开发者</span><span>开源生态建设中</span><span>GitHub Pages</span></div>
+        </article>
+        <section class="section-block" aria-labelledby="latest-title">
+          <div class="section-heading"><h2 id="latest-title">最近文章</h2><a href="#posts" data-route="posts">查看全部</a></div>
+          <div class="post-list" id="latest-posts"></div>
+        </section>
+        <section class="section-block" aria-labelledby="project-title">
+          <div class="section-heading"><h2 id="project-title">项目展台</h2><a href="#projects" data-route="projects">更多项目</a></div>
+          <div class="project-grid" id="home-projects"></div>
+        </section>
+      </section>
+      <section id="posts" class="view" aria-labelledby="posts-title">
+        <div class="section-heading page-heading"><div><p class="eyebrow">Essays</p><h2 id="posts-title">个人随笔</h2></div><label class="search-box"><span>搜索</span><input id="searchInput" type="search" placeholder="输入 AI、嵌入式、GitHub..." /></label></div>
+        <div class="post-list" id="all-posts"></div>
+      </section>
+      <section id="projects" class="view" aria-labelledby="projects-title"><p class="eyebrow">Open Source</p><h2 id="projects-title">开源项目</h2><div class="project-grid" id="all-projects"></div></section>
+      <section id="about" class="view" aria-labelledby="about-title"><p class="eyebrow">About</p><h2 id="about-title">关于我</h2><article class="article-card prose"><p>你好，我是 luyvzz，一名正在搭建个人开源生态的大学生开发者。</p><p>我目前关注 AI、嵌入式和机器人视觉。这个博客会放一些个人资料，也会记录项目从想法到能跑起来的过程。很多东西一开始都不完整，但我想把它们整理成可以被别人看懂的样子。</p><p>这个站点和 GitHub 主页一起组成我的公开入口。面试官可以从这里看到我做过什么，开发者可以从这里找到项目背景，我自己也可以回头看每一次折腾留下了什么。</p></article></section>
+      <section id="archives" class="view" aria-labelledby="archives-title"><p class="eyebrow">Timeline</p><h2 id="archives-title">归档</h2><div class="timeline" id="archive-list"></div></section>
+      <section id="tags" class="view" aria-labelledby="tags-title"><p class="eyebrow">Tags</p><h2 id="tags-title">标签</h2><div class="tag-cloud" id="tag-cloud"></div></section>
+      <section id="friends" class="view" aria-labelledby="friends-title"><p class="eyebrow">Links</p><h2 id="friends-title">友链</h2><div class="project-grid"><article class="project-card"><span class="project-icon">🧭</span><h3>zuoliangyu</h3><p>这个博客视觉方向的参考站点。</p><a href="https://zuoliangyu.github.io/">访问站点</a></article><article class="project-card"><span class="project-icon">🐙</span><h3>luyvzz GitHub</h3><p>我的开源项目和 Profile 首页。</p><a href="https://github.com/luyvzz">访问 GitHub</a></article></div></section>
+    </main>
+    <aside class="right-rail" aria-label="侧边信息"><section class="widget"><h2>站内搜索</h2><input id="railSearch" type="search" placeholder="搜索文章和项目" /></section><section class="widget"><h2>正在做</h2><ul class="clean-list"><li>整理 GitHub 开源生态</li><li>包装 AI × EDA 项目</li><li>记录机器人视觉学习</li></ul></section><section class="widget"><h2>标签</h2><div class="mini-tags" id="rail-tags"></div></section></aside>
+  </div>
+  <footer class="footer"><span>© 2026 鹿屿の博客</span><span>Built with static HTML, CSS and JavaScript.</span></footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

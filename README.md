@@ -14,7 +14,7 @@
 
 ## 视觉方向
 
-网站采用去框化高级界面、极客控制台风格和沉浸式具身智能视觉，主色使用青绿色和琥珀色。头像来自 `assets/images/avatar.jpg`，并通过已配置的 `micu-gpt-image-2` MCP 调用中转站 gpt-image-2 生成新版视觉资产：`assets/images/avatar-gpt-image-2.png`、`assets/images/avatar-gpt-image-2.webp`、`assets/images/avatar-gpt-image-2-icon.png`、`assets/images/hero-embodied-ai-lab.png`、`assets/images/hero-embodied-ai-lab.webp`。
+网站采用去框化高级界面、极客控制台风格和沉浸式具身智能视觉，主色使用青绿色和琥珀色；字体系统改为中文行楷（`STXingkai` / `华文行楷` 优先回退）与英文 `Times New Roman`，让中文更有个人手写气质，英文保留经典衬线的实验室档案感。头像来自 `assets/images/avatar.jpg`，并通过已配置的 `micu-gpt-image-2` MCP 调用中转站 gpt-image-2 生成新版视觉资产：`assets/images/avatar-gpt-image-2.png`、`assets/images/avatar-gpt-image-2.webp`、`assets/images/avatar-gpt-image-2-icon.png`、`assets/images/hero-embodied-ai-lab.png`、`assets/images/hero-embodied-ai-lab.webp`。
 
 ## MCP 图像链路
 

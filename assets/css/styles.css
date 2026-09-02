@@ -3,14 +3,17 @@
   --bg: #020806; --ink: #f2fff9; --muted: #8aa49a; --soft: #49635a;
   --cyan: #67ffe4; --green: #7dff9a; --amber: #ffbf3d; --hot: #ff6d8c;
   --line: rgba(103,255,228,.18); --wash: rgba(2,8,6,.72);
-  --mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
-  --sans: Inter, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", sans-serif;
-  --display: "Arial Black", "Microsoft YaHei UI", Inter, sans-serif;
+  --zh: "STXingkai", "华文行楷", "KaiTi", "楷体", serif;
+  --en: "Times New Roman", Times, "Nimbus Roman No9 L", serif;
+  --mixed: "Times New Roman", Times, "STXingkai", "华文行楷", "KaiTi", "楷体", serif;
+  --mono: var(--en);
+  --sans: var(--mixed);
+  --display: var(--mixed);
 }
 [data-theme="light"] { color-scheme: light; --bg:#eef0e6; --ink:#101815; --muted:#53645d; --soft:#687a72; --cyan:#007a70; --green:#168a43; --amber:#a85b00; --hot:#c24161; --line:rgba(0,122,112,.2); --wash:rgba(238,240,230,.74); }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin:0; min-height:100vh; overflow-x:hidden; background:var(--bg); color:var(--ink); font-family:var(--sans); line-height:1.62; }
+body { margin:0; min-height:100vh; overflow-x:hidden; background:var(--bg); color:var(--ink); font-family:var(--mixed); line-height:1.62; font-synthesis-weight:auto; }
 body::before { content:""; position:fixed; inset:0; z-index:-5; background: linear-gradient(90deg, rgba(2,8,6,.96), rgba(2,8,6,.72) 42%, rgba(2,8,6,.88)), url("../images/hero-embodied-ai-lab.webp") center/cover; transform:scale(1.04); }
 body::after { content:""; position:fixed; inset:0; z-index:-4; pointer-events:none; background: linear-gradient(transparent 0 96%, rgba(103,255,228,.08) 97%), linear-gradient(90deg, rgba(103,255,228,.07) 1px, transparent 1px); background-size: 100% 9px, 72px 72px; opacity:.34; mask-image:radial-gradient(circle at 55% 25%, black 0 36%, transparent 74%); }
 .atmosphere { position:fixed; inset:-20%; z-index:-3; pointer-events:none; background: radial-gradient(circle at 70% 18%, rgba(103,255,228,.18), transparent 30rem), radial-gradient(circle at 82% 68%, rgba(255,191,61,.15), transparent 26rem), radial-gradient(circle at 22% 58%, rgba(125,255,154,.09), transparent 32rem); animation: atmosphereDrift 18s ease-in-out infinite alternate; }
@@ -33,7 +36,7 @@ a { color:inherit; text-decoration:none; } a:hover { color:var(--cyan); }
 .avatar-frame img { width:100%; height:100%; display:block; object-fit:cover; border-radius:28% 50% 34% 50%; box-shadow:0 0 55px rgba(103,255,228,.28), 0 26px 70px rgba(0,0,0,.48); animation: avatarFloat 6s ease-in-out infinite; }
 .scan-line { position:absolute; left:8%; right:8%; top:14%; height:1px; z-index:2; background:var(--cyan); box-shadow:0 0 18px var(--cyan); animation: scan 2.8s ease-in-out infinite; }
 .eyebrow,.section-kicker { margin:0 0 12px; color:var(--amber); font:800 .72rem/1.2 var(--mono); text-transform:uppercase; letter-spacing:.18em; }
-h1,h2,h3{ margin:0; line-height:.96; letter-spacing:-.075em; } h1{ font-family:var(--display); font-size:clamp(2rem,2.5vw,2.65rem); writing-mode:horizontal-tb; margin:8px 0 18px; max-width:none; white-space:nowrap; } h2{ font-family:var(--display); font-size:clamp(3.4rem,8vw,8.6rem); max-width:9.5ch; } h3{ font-size:clamp(1.35rem,2vw,2.2rem); line-height:1.08; letter-spacing:-.05em; }
+h1,h2,h3{ margin:0; line-height:.96; letter-spacing:-.055em; font-family:var(--display); } h1{ font-size:clamp(2rem,2.5vw,2.65rem); writing-mode:horizontal-tb; margin:8px 0 18px; max-width:none; white-space:nowrap; } h2{ font-size:clamp(3.4rem,8vw,8.6rem); max-width:9.5ch; } h3{ font-size:clamp(1.35rem,2vw,2.2rem); line-height:1.08; letter-spacing:-.05em; }
 .subtitle { margin:0 0 18px; max-width:18ch; color:var(--cyan); font-weight:950; letter-spacing:-.02em; } .bio,.lead,.post-card p,.project-card p,.prose p,.clean-list{ color:var(--muted); font-size:1rem; }
 .profile-actions{ display:flex; gap:14px; margin-top:24px; }
 .button{ position:relative; display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 20px; font:900 .78rem/1 var(--mono); letter-spacing:.06em; overflow:hidden; transition:transform .22s ease,color .22s ease; }

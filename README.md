@@ -14,7 +14,14 @@
 
 ## 视觉方向
 
-网站采用极客控制台风格，主色使用青绿色和琥珀色，头像来自 `assets/images/avatar.jpg`，网页展示版本为 `assets/images/avatar-cyber.png`。
+网站采用极客控制台风格，主色使用青绿色和琥珀色。头像来自 `assets/images/avatar.jpg`，并通过已配置的 `micu-gpt-image-2` MCP 调用中转站 gpt-image-2 生成新版视觉资产：`assets/images/avatar-gpt-image-2.png`、`assets/images/avatar-gpt-image-2.webp`、`assets/images/avatar-gpt-image-2-icon.png`、`assets/images/hero-embodied-ai-lab.png`、`assets/images/hero-embodied-ai-lab.webp`。
+
+## MCP 图像链路
+
+- MCP 名称：`micu-gpt-image-2`
+- Base URL：`https://www.micuapi.ai/v1`
+- 模型：`gpt-image-2`
+- 用途：首页主视觉与个人头像赛博化生成
 
 ## 本地预览
 

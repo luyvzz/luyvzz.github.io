@@ -14,7 +14,7 @@ foreach ($needle in @("鹿屿の博客", "具身智能", "AI", "机器人视觉"
 }
 
 $css = Get-Content -Raw -Encoding UTF8 assets/css/styles.css
-foreach ($needle in @("prefers-reduced-motion", "@media", "--cyan", "--amber", "STXingkai", "华文行楷", "Times New Roman", "--mixed", "atmosphereDrift", "avatarFloat", "lineTravel", "kinetic-title", "orbital-avatar", "cursor-light", "reveal.is-visible", "clip-path", "hero-embodied-ai-lab.webp")) {
+foreach ($needle in @("prefers-reduced-motion", "@media", "--cyan", "--amber", "--paper", "--hairline", "STXingkai", "华文行楷", "Times New Roman", "--mixed", "atmosphereDrift", "avatarFloat", "lineTravel", "kinetic-title", "orbital-avatar", "cursor-light", "reveal.is-visible", "clip-path", "hero-embodied-ai-lab.webp")) {
   if ($css.Contains($needle)) { Pass "css:$needle" } else { Fail "css:$needle" }
 }
 
@@ -24,7 +24,7 @@ foreach ($needle in @("const posts", "const projects", "setupTheme", "setupRouti
 }
 
 $readme = Get-Content -Raw -Encoding UTF8 README.md
-foreach ($needle in @("鹿屿の博客", "https://luyvzz.github.io/", "GitHub Pages", "具身智能", "gpt-image-2", "micu-gpt-image-2", "去框化高级界面", "Times New Roman", "中文行楷", "磁吸交互", "本地验证")) {
+foreach ($needle in @("鹿屿の博客", "https://luyvzz.github.io/", "GitHub Pages", "具身智能", "gpt-image-2", "micu-gpt-image-2", "Minimal AI Cockpit", "神经网络 Canvas", "Times New Roman", "中文行楷", "磁吸交互", "本地验证")) {
   if ($readme.Contains($needle)) { Pass "readme:$needle" } else { Fail "readme:$needle" }
 }
 

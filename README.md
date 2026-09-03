@@ -14,7 +14,7 @@
 
 ## 视觉方向
 
-网站采用去框化高级界面、极客控制台风格和沉浸式具身智能视觉，主色使用青绿色和琥珀色；字体系统改为中文行楷（`STXingkai` / `华文行楷` 优先回退）与英文 `Times New Roman`，让中文更有个人手写气质，英文保留经典衬线的实验室档案感。头像来自 `assets/images/avatar.jpg`，并通过已配置的 `micu-gpt-image-2` MCP 调用中转站 gpt-image-2 生成新版视觉资产：`assets/images/avatar-gpt-image-2.png`、`assets/images/avatar-gpt-image-2.webp`、`assets/images/avatar-gpt-image-2-icon.png`、`assets/images/hero-embodied-ai-lab.png`、`assets/images/hero-embodied-ai-lab.webp`。
+网站升级为 `Minimal AI Cockpit`：保留神经网络 Canvas、鼠标光晕、磁吸交互、轨道头像、扫描线和信号条这些极客炫技点，但把视觉重心改为更克制的深色留白、精细线性层次、高对比文字和轻量沉浸背景，避免廉价卡片堆叠；字体系统仍采用中文行楷（`STXingkai` / `华文行楷` 优先回退）与英文 `Times New Roman`。头像来自 `assets/images/avatar.jpg`，并通过已配置的 `micu-gpt-image-2` MCP 调用中转站 gpt-image-2 生成新版视觉资产：`assets/images/avatar-gpt-image-2.png`、`assets/images/avatar-gpt-image-2.webp`、`assets/images/avatar-gpt-image-2-icon.png`、`assets/images/hero-embodied-ai-lab.png`、`assets/images/hero-embodied-ai-lab.webp`。
 
 ## MCP 图像链路
 

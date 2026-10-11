@@ -1,0 +1,43 @@
+---
+import Base from './Base.astro';
+import Icon from '../components/Icon.astro';
+import { url } from '../data/site';
+const { frontmatter } = Astro.props;
+---
+
+<Base
+  title={frontmatter.title}
+  active="notes"
+  breadcrumb={`notes / ${frontmatter.slug}`}
+  description={frontmatter.description}
+>
+  <article class="article">
+    <a class="text-link article-back" href={url('notes/')}>
+      <span>←</span>返回所有笔记
+    </a>
+    <header class="article-header">
+      <span class="eyebrow mono">{frontmatter.category} / FIELD NOTES</span>
+      <h1>{frontmatter.title}</h1>
+      <div class="article-meta">
+        <time class="mono" datetime="2026-10-10">
+          2026.10.10
+        </time>
+        <span>·</span>
+        <span>{frontmatter.minutes} 分钟阅读</span>
+        <span class="sample-label">示例笔记</span>
+      </div>
+    </header>
+    <div class="content-notice">
+      <Icon name="file" />
+      <p>这是一篇用于展示站点排版的示例内容，不代表鹿屿的个人经历。</p>
+    </div>
+    <div class="prose">
+      <slot />
+    </div>
+    <div class="article-end mono">// end of note. keep exploring.</div>
+    <a class="button button-outline" href={url('notes/')}>
+      继续阅读
+      <Icon name="arrow" size={17} />
+    </a>
+  </article>
+</Base>

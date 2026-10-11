@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { profile } from '../data/site';
+---
+
+<Base title="关于我" active="about" breadcrumb="about.md">
+  <section class="page-intro">
+    <span class="eyebrow mono">THE HUMAN BEHIND THE CODE</span>
+    <h1>
+      你好，我是鹿屿<span class="heading-dot">.</span>
+    </h1>
+    <p>也叫张路宇。一名大学生，一个技术与开发爱好者。</p>
+  </section>
+  <div class="about-grid">
+    <div class="about-text prose">
+      <h2>用代码，回应好奇心</h2>
+      <p>{profile.description}</p>
+      <p>
+        这个网站也会和我一起成长：从简单的个人介绍开始，逐渐积累项目、学习笔记，以及值得分享的小实验。
+      </p>
+      <blockquote>保持好奇，把想法写成现实。</blockquote>
+    </div>
+    <aside class="profile-card">
+      <span class="profile-monogram">
+        鹿<span>✳</span>
+      </span>
+      <strong>
+        {profile.fullName} / {profile.name}
+      </strong>
+      <span class="mono">@{profile.handle}</span>
+      <div>
+        <span class="status-dot"></span>
+        {profile.role}
+      </div>
+      <a href={profile.github} target="_blank" rel="noopener noreferrer">
+        GitHub
+        <Icon name="external" size={15} />
+      </a>
+    </aside>
+  </div>
+  <section class="about-section" id="now">
+    <span class="eyebrow mono">NOW / 最近在做什么</span>
+    <h2>搭建自己的数字空间</h2>
+    <p>
+      让这个个人网站拥有清晰的内容、舒服的阅读体验，以及一点能动手玩的细节。下一步是整理真实的项目经历和学习笔记，让这个空间慢慢丰富起来。
+    </p>
+    <div class="now-checklist">
+      <span>
+        <i>✓</i>第一版个人主页
+      </span>
+      <span>
+        <i>✓</i>可以玩的迷你终端
+      </span>
+      <span>
+        <i>○</i>整理个人项目与笔记
+      </span>
+    </div>
+  </section>
+  <section class="about-section" id="this-site">
+    <span class="eyebrow mono">COLOPHON / 关于这个网站</span>
+    <h2>简单，也认真</h2>
+    <p>
+      采用 Astro 构建静态页面，使用 Markdown 写文章，交互由 TypeScript
+      实现。浅色与深色主题、键盘快捷操作，以及侧栏里的文件路径，组成这个小小的开发者工作台。
+    </p>
+    <div class="stack-grid">
+      <div>
+        <span class="mono">FRAMEWORK</span>
+        <strong>Astro</strong>
+      </div>
+      <div>
+        <span class="mono">INTERACTION</span>
+        <strong>TypeScript</strong>
+      </div>
+      <div>
+        <span class="mono">CONTENT</span>
+        <strong>Markdown</strong>
+      </div>
+      <div>
+        <span class="mono">DEPLOY TARGET</span>
+        <strong>GitHub Pages</strong>
+      </div>
+    </div>
+  </section>
+  <section class="about-section" id="contact">
+    <span class="eyebrow mono">SAY HELLO</span>
+    <h2>在互联网的另一端见</h2>
+    <p>欢迎来看看我正在做什么，也欢迎交流技术与开发中的新发现。</p>
+    <a
+      class="button button-primary"
+      href={profile.github}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Icon name="github" size={18} />
+      GitHub / {profile.handle}
+      <Icon name="external" size={16} />
+    </a>
+    {profile.email && (
+      <a class="button button-text" href={`mailto:${profile.email}`}>
+        <Icon name="mail" size={18} />
+        {profile.email}
+      </a>
+    )}
+  </section>
+</Base>

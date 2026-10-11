@@ -1,0 +1,147 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import NoteList from '../components/NoteList.astro';
+import Terminal from '../components/Terminal.astro';
+import { profile, projects, url } from '../data/site';
+---
+
+<Base>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-kicker">
+      <span class="status-pill">
+        <span class="status-dot"></span>正在学习，持续构建
+      </span>
+      <span class="mono hero-hello">HELLO, WORLD.</span>
+    </div>
+    <div class="hero-main">
+      <div class="hero-copy">
+        <p class="hero-intro">
+          你好，我是<span>{profile.name}</span>
+          <span class="wave">↗</span>
+        </p>
+        <h1 id="hero-title">
+          保持好奇，
+          <br />
+          把想法
+          <span class="accent-word">
+            写成现实<span class="word-underline"></span>
+          </span>
+          <span class="hero-period">.</span>
+        </h1>
+        <p class="hero-description">
+          一名热爱技术与开发的大学生。
+          <br />
+          在代码里探索，在实践中成长，偶尔折腾点有趣的东西。
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href={url('projects/')}>
+            看看我的项目
+            <Icon name="arrow" size={17} />
+          </a>
+          <a
+            class="button button-text"
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="github" size={18} />
+            GitHub
+            <Icon name="external" size={15} />
+          </a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="art-coordinate mono">FIG. 001 — CURIOSITY</div>
+        <div class="art-canvas">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="art-cross cross-one">+</div>
+          <div class="art-cross cross-two">+</div>
+          <button class="pixel-art" id="pixel-art" aria-label="切换像素图案" title="点击，换个心情">
+            <svg id="pixel-svg" viewBox="0 0 100 100" aria-hidden="true">
+              <path d="M40 10h20v20h10V20h20v20H70v20h20v20H70V70H60v20H40V70H30v10H10V60h20V40H10V20h20v10h10Z" />
+            </svg>
+          </button>
+          <span class="art-bracket bracket-left">[</span>
+          <span class="art-bracket bracket-right">]</span>
+        </div>
+        <div class="art-caption mono">
+          <span class="art-caption-line"></span>
+          <span id="art-caption">stay curious, keep building.</span>
+        </div>
+        <span class="art-click-hint">psst… 点一下试试</span>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <span class="mono">&lt;student / builder / explorer&gt;</span>
+      <a href={url('about/')} class="text-link">
+        更多关于我
+        <Icon name="arrow" size={15} />
+      </a>
+    </div>
+  </section>
+  <aside class="now-strip">
+    <span class="now-label mono">
+      <span class="status-dot"></span>NOW
+    </span>
+    <p>正在把这个小站，从一个想法变成自己的数字空间。</p>
+    <a href={url('about/#now')} aria-label="查看我的近况">
+      <Icon name="arrow" size={18} />
+    </a>
+  </aside>
+  <section class="projects-section" aria-labelledby="projects-title">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow mono">01 / SELECTED WORK</span>
+        <h2 id="projects-title">
+          从想法到作品<span class="heading-dot">.</span>
+        </h2>
+      </div>
+      <a href={url('projects/')} class="text-link">
+        全部项目
+        <Icon name="arrow" size={16} />
+      </a>
+    </div>
+    <div class="project-grid">
+      {projects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </section>
+  <section class="notes-section" aria-labelledby="notes-title">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow mono">02 / FIELD NOTES</span>
+        <h2 id="notes-title">
+          边学，边记<span class="heading-dot">.</span>
+        </h2>
+      </div>
+      <a href={url('notes/')} class="text-link">
+        所有笔记
+        <Icon name="arrow" size={16} />
+      </a>
+    </div>
+    <NoteList />
+  </section>
+  <Terminal />
+  <section class="home-contact">
+    <div>
+      <span class="eyebrow mono">LET'S CONNECT</span>
+      <h2>
+        有意思的想法，值得聊聊<span class="heading-dot">↗</span>
+      </h2>
+      <p>关于技术、开源，或是你正在折腾的小东西。</p>
+    </div>
+    <a
+      class="button button-outline"
+      href={profile.github}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Icon name="github" size={18} />在 GitHub 找到我
+      <Icon name="external" size={16} />
+    </a>
+  </section>
+</Base>

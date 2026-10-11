@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import NoteList from '../../components/NoteList.astro';
+---
+
+<Base title="笔记" active="notes" breadcrumb="notes">
+  <section class="page-intro">
+    <span class="eyebrow mono">LEARN IN PUBLIC</span>
+    <h1>
+      留一点思考的痕迹<span class="heading-dot">.</span>
+    </h1>
+    <p>
+      记录问题、尝试和偶然发现。
+      <br />
+      不必每一次都有标准答案，先把思考留下来。
+    </p>
+  </section>
+  <div class="content-notice">
+    <span class="mono">NOTE</span>
+    <p>以下是随第一版网站提供的示例笔记，用于展示文章排版；后续将替换为鹿屿自己的学习记录。</p>
+  </div>
+  <NoteList />
+  <div class="notes-end mono">// more notes, more possibilities.</div>
+</Base>

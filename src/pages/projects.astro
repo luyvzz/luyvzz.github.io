@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Terminal from '../components/Terminal.astro';
+import { projects } from '../data/site';
+---
+
+<Base title="项目" active="projects" breadcrumb="projects">
+  <section class="page-intro">
+    <span class="eyebrow mono">THINK. BUILD. ITERATE.</span>
+    <h1>
+      做点有意思的东西<span class="heading-dot">.</span>
+    </h1>
+    <p>
+      把好奇心变成能看见、能使用的小作品。
+      <br />
+      这里从这个网站和它的交互实验开始，慢慢更新。
+    </p>
+    <span class="page-count mono">02 PROJECTS / ALWAYS IN PROGRESS</span>
+  </section>
+  <div class="project-grid">
+    {projects.map((project) => (
+      <ProjectCard project={project} />
+    ))}
+  </div>
+  <div class="build-note">
+    <span class="mono">// work in progress</span>
+    <p>新的项目还在路上。比起填满列表，我更想把每一个想法认真完成。</p>
+  </div>
+  <Terminal />
+</Base>

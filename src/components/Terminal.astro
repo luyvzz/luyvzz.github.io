@@ -1,0 +1,75 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/site';
+---
+
+<section id="terminal" class="terminal-section" aria-labelledby="terminal-title">
+  <div class="section-heading">
+    <div>
+      <span class="eyebrow mono">03 / PLAYGROUND</span>
+      <h2 id="terminal-title">
+        要不要，敲点什么？<span class="heading-dot">_</span>
+      </h2>
+    </div>
+    <span class="section-aside">一个可以玩的角落</span>
+  </div>
+  <div
+    class="terminal-window"
+    data-name={profile.name}
+    data-fullname={profile.fullName}
+    data-github={profile.github}
+  >
+    <div class="terminal-bar">
+      <div class="terminal-dots">
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+      <span class="mono">visitor@luyu-space: ~</span>
+      <button id="terminal-clear" class="terminal-clear" aria-label="清空终端" title="清空终端">
+        <Icon name="close" size={15} />
+      </button>
+    </div>
+    <div
+      id="terminal-output"
+      class="terminal-output mono"
+      role="log"
+      aria-live="polite"
+      aria-label="终端输出"
+    >
+      <p class="terminal-welcome">Welcome to my little corner of the internet.</p>
+      <p class="terminal-muted">
+        输入 <span>help</span> 看看这里能做什么，或者直接打声招呼：<span>hello</span>
+      </p>
+    </div>
+    <form id="terminal-form" class="terminal-input-row mono">
+      <label for="terminal-input">
+        <span>visitor</span>
+        <span class="terminal-path"> ~ </span>❯
+      </label>
+      <input
+        id="terminal-input"
+        aria-label="输入终端命令"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        maxlength="200"
+        placeholder="help"
+      />
+      <button type="submit" aria-label="执行命令">
+        ↵
+      </button>
+    </form>
+  </div>
+  <div class="terminal-hint mono">
+    <span>
+      Try: <button data-command="about">about</button>
+      <button data-command="theme">theme</button>
+      <button data-command="banner">banner</button>
+    </span>
+    <span>↑ ↓ 历史命令 · Enter 执行</span>
+  </div>
+</section>
+<script>
+  import '../scripts/terminal';
+</script>

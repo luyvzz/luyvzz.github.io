@@ -1,58 +1,73 @@
-# 鹿屿の博客
+# 鹿屿 · Personal Space
 
-这是 luyvzz 的个人网页博客，部署在 GitHub Pages。
+张路宇 / 鹿屿（[@luyvzz](https://github.com/luyvzz)）的个人网站第一版。
 
-访问地址：<https://luyvzz.github.io/>
-
-## 内容定位
-
-- 个人资料
-- 具身智能和 AI 学习记录
-- 嵌入式与机器人视觉笔记
-- 开源项目展示
-- 个人随笔
-
-## 视觉方向
-
-网站升级为 `Minimal AI Cockpit`：保留神经网络 Canvas、鼠标光晕、磁吸交互、轨道头像、扫描线和信号条这些极客炫技点，但把视觉重心改为更克制的深色留白、精细线性层次、高对比文字和轻量沉浸背景，避免廉价卡片堆叠；字体系统仍采用中文行楷（`STXingkai` / `华文行楷` 优先回退）与英文 `Times New Roman`。头像来自 `assets/images/avatar.jpg`，并通过已配置的 `micu-gpt-image-2` MCP 调用中转站 gpt-image-2 生成新版视觉资产：`assets/images/avatar-gpt-image-2.png`、`assets/images/avatar-gpt-image-2.webp`、`assets/images/avatar-gpt-image-2-icon.png`、`assets/images/hero-embodied-ai-lab.png`、`assets/images/hero-embodied-ai-lab.webp`。
-
-## MCP 图像链路
-
-- MCP 名称：`micu-gpt-image-2`
-- Base URL：`https://www.micuapi.ai/v1`
-- 模型：`gpt-image-2`
-- 用途：首页主视觉与个人头像赛博化生成
+暖白与橙色的极简阅读界面，搭配编辑器文件树、命令面板和迷你终端。使用 Astro 静态生成，无需数据库或后端。
 
 ## 本地预览
 
-```powershell
-python -m http.server 8000
+要求 Node.js 24。
+
+```sh
+npm ci
+npm run dev
 ```
 
-然后访问 <http://127.0.0.1:8000/>。
+打开终端提示的本地网址（默认 http://127.0.0.1:4321）。
 
-## 本地验证
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-SiteQuality.ps1
+```sh
+npm run build
+npm run preview
 ```
 
-## 技术栈
+`build` 包含 Astro / TypeScript 检查，静态输出在 `dist/`。
 
-- HTML
-- CSS
-- Vanilla JavaScript
-- GitHub Pages
+## 编辑内容
 
-## License
+- `src/data/site.ts`：姓名、昵称、GitHub、简介、邮箱、项目和笔记索引。
+- `src/pages/index.astro`：首页文案。
+- `src/pages/about.astro`：个人介绍和近况。
+- `src/pages/notes/*.md`：Markdown 文章；复制现有文章并填写 frontmatter，然后更新笔记索引。
+- `src/styles/global.css`：主题、布局与响应式样式。
+- `src/scripts/terminal.ts`：模拟终端命令。
 
-MIT
+当前两项作品是本网站与实际可用的终端实验，三篇文章明确标注为示例笔记。未提供邮箱，因此不显示虚构邮箱。上线前可换成自己的学习记录与项目。
 
-## 交互动效
+## 交互
 
-- 全局神经网络 Canvas 背景
-- 鼠标跟随光晕 `cursor-light`
-- 滚动入场 `reveal`
-- 按钮与项目的磁吸交互 `magnetic`
-- 头像轨道、扫描线、信号条和系统状态动效
-- 减少传统卡片/边框结构，用开放式排版和细线层次提升高级感
+- `Ctrl + K` / `⌘ + K`：打开快捷面板；支持搜索、上下键选择、Enter 跳转、Escape 关闭。
+- 左下角按钮：切换深浅主题，保存在当前浏览器中。
+- 点击首页像素图案：切换三种图案。
+- 终端：`help`、`about`、`projects`、`notes`、`home`、`theme`、`hello`、`banner`、`echo 文本`、`clear`；上下键浏览历史。
+- 终端仅执行固定的页面交互，所有输入通过 `textContent` 输出，不执行系统命令或 HTML。
+
+## 部署到 GitHub Pages
+
+1. 建议创建 GitHub 仓库 `luyvzz.github.io`，将本项目推送到 `main` 分支。
+2. 仓库 Settings → Pages → Build and deployment → Source 选择 **GitHub Actions**。
+3. 仓库中已包含 `.github/workflows/deploy.yml`，推送后自动检查、构建和部署。
+4. 用户主页网址为 `https://luyvzz.github.io/`。普通仓库也支持，工作流会读取 Pages 的 base path。
+
+本地默认站点地址是 `https://luyvzz.github.io`。自定义构建可通过 `SITE_URL` 与 `BASE_PATH` 环境变量覆盖。
+
+仓库：<https://github.com/luyvzz/luyvzz.github.io>。部署工作流在 `main` 更新后自动发布到 <https://luyvzz.github.io/>。
+
+旧版 `index.html`、`assets/` 与 `tests/Test-SiteQuality.ps1` 保留作源码参考；当前网站仅使用 `src/`、`public/` 构建，上传内容为 `dist/`，旧版文件不会混入新版页面。原有 Git 提交历史完整保留。
+
+## 验证
+
+```sh
+npm run build
+```
+
+浏览器检查覆盖桌面/手机布局、文章导航、主题持久化、命令搜索、终端历史与文本安全、移动菜单以及子路径资源。
+
+已通过的浏览器检查脚本位于 `tests/browser_check.py`。需要 Python Playwright 与 Chromium：
+
+```sh
+python -m pip install playwright
+python -m playwright install chromium
+python tests/browser_check.py http://127.0.0.1:4321/
+```
+
+截图和检查报告输出到 `test-results/`（已从 Git 忽略）。子路径检查使用 `tests/subpath_check.py`，要求将以 `/portfolio/` 为 base 构建的目录通过本地 4323 端口提供服务。

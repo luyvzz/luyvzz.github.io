@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+import { notes, url } from '../data/site';
+---
+
+<div class="note-list">
+  {notes.map((note) => (
+    <a class="note-row" href={url(`notes/${note.slug}/`)}>
+      <span class="note-date mono">{note.date}</span>
+      <div class="note-info">
+        <h3>{note.title}</h3>
+        <span>
+          {note.category}
+          <span class="note-meta-dot">·</span>
+          {note.minutes}
+          <span class="sample-label">示例笔记</span>
+        </span>
+      </div>
+      <Icon name="arrow" size={20} />
+    </a>
+  ))}
+</div>

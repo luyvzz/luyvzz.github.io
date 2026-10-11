@@ -1,0 +1,313 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import ProjectPreview from '../../components/ProjectPreview.astro';
+import { projects, type Project } from '../../data/projects';
+import { url } from '../../data/site';
+export function getStaticPaths() {
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+const next = projects[(projects.findIndex((item) => item.id === project.id) + 1) % projects.length];
+---
+
+<Base
+  title={project.title}
+  active="projects"
+  breadcrumb={`projects / ${project.id}`}
+  description={project.description}
+>
+  <article class="project-detail">
+    <a class="text-link article-back" href={url('projects/')}>
+      <span>←</span>返回全部项目
+    </a>
+    <header class="detail-heading">
+      <span class="eyebrow mono">
+        PROJECT {project.number} / {project.type}
+      </span>
+      <h1>
+        {project.title}
+        <span class="heading-dot">.</span>
+      </h1>
+      <p>{project.tagline}</p>
+      <div class="detail-tags">
+        <span class="project-status">
+          <i></i>
+          {project.status}
+        </span>
+        <span class="detail-separator">/</span>
+        {project.tags.map((tag) => (
+          <span class="mono">{tag}</span>
+        ))}
+      </div>
+      <div class="detail-actions">
+        <a
+          class="button button-primary"
+          href={project.repository}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="github" size={18} />
+          查看 GitHub 源码
+          <Icon name="external" size={16} />
+        </a>
+        <a
+          class="button button-text"
+          href={`${project.repository}#readme`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          运行与安装说明
+          <Icon name="arrow" size={16} />
+        </a>
+      </div>
+    </header>
+    <ProjectPreview variant={project.preview} number={project.number} type={project.type} />
+    <section class="detail-section">
+      <span class="eyebrow mono">01 / THE PROBLEM</span>
+      <h2>它解决什么问题</h2>
+      <p>{project.problem}</p>
+    </section>
+    <section class="detail-section">
+      <span class="eyebrow mono">02 / CAPABILITIES</span>
+      <h2>从问题到工具</h2>
+      <div class="feature-grid">
+        {project.features.map((feature, i) => (
+          <div class="feature-item">
+            <span class="mono">0{i + 1}</span>
+            <div>
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+    <section class="detail-section">
+      <span class="eyebrow mono">03 / UNDER THE HOOD</span>
+      <h2>实现思路</h2>
+      <p>{project.implementation}</p>
+      <div class="source-list">
+        {project.sources.map((source) => (
+          <a
+            href={`${project.repository}/blob/${project.revision}/${source.path}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="code" size={16} />
+            <div>
+              <span>{source.label}</span>
+              <code>{source.path}</code>
+            </div>
+            <Icon name="external" size={16} />
+          </a>
+        ))}
+      </div>
+    </section>
+    <section class="detail-section">
+      <span class="eyebrow mono">04 / BEFORE YOU TRY</span>
+      <h2>适用环境与边界</h2>
+      <p>{project.requirements}</p>
+    </section>
+    <div class="detail-source-note">
+      <span class="mono">SOURCE / 2026.10.11</span>
+      <p>内容依据公开仓库 README 与源码整理。项目实际运行条件和最新进展，请以仓库说明为准。</p>
+    </div>
+    <a class="next-project" href={url(`projects/${next.id}/`)}>
+      <div>
+        <span class="eyebrow mono">KEEP EXPLORING / 下一个项目</span>
+        <strong>{next.title}</strong>
+      </div>
+      <Icon name="arrow" size={23} />
+    </a>
+  </article>
+</Base>
+<style>
+  .project-detail {
+    max-width: 820px;
+    margin: 40px auto 50px;
+  }
+  .detail-heading h1 {
+    font-size: 42px;
+    line-height: 1.35;
+    letter-spacing: -1px;
+    font-weight: 600;
+    margin: 14px 0 17px;
+    overflow-wrap: anywhere;
+  }
+  .detail-heading > p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+  }
+  .detail-tags {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 22px 0;
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .detail-tags .project-status {
+    font-size: 11px;
+  }
+  .detail-separator {
+    color: var(--subtle);
+  }
+  .detail-actions {
+    display: flex;
+    gap: 17px;
+    flex-wrap: wrap;
+    margin: 0 0 35px;
+  }
+  .project-detail :global(.project-visual) {
+    height: 260px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+  }
+  .detail-section {
+    margin-top: 40px;
+  }
+  .detail-section h2 {
+    font-size: 23px;
+    font-weight: 550;
+    margin: 9px 0 17px;
+  }
+  .detail-section > p {
+    font-size: 14px;
+    line-height: 2;
+    color: var(--muted);
+  }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 30px;
+  }
+  .feature-item {
+    display: flex;
+    gap: 12px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+  }
+  .feature-item > .mono {
+    font-size: 10px;
+    color: var(--accent);
+    padding-top: 3px;
+  }
+  .feature-item h3 {
+    font-size: 14px;
+    font-weight: 550;
+  }
+  .feature-item p {
+    font-size: 12px;
+    line-height: 1.95;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .source-list {
+    margin-top: 22px;
+    border-top: 1px solid var(--border);
+  }
+  .source-list > a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .source-list > a > div {
+    flex: 1;
+    min-width: 0;
+  }
+  .source-list span {
+    font-size: 12px;
+  }
+  .source-list code {
+    display: block;
+    font: 10px/1.8 var(--mono);
+    margin-top: 4px;
+    overflow-wrap: anywhere;
+  }
+  .source-list > a:hover {
+    color: var(--accent);
+  }
+  .detail-source-note {
+    border-left: 2px solid var(--border);
+    padding: 0 17px;
+    margin-top: 30px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .detail-source-note > .mono {
+    font-size: 9px;
+  }
+  .detail-source-note p {
+    margin-top: 6px;
+    line-height: 1.9;
+  }
+  .next-project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 27px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 36px;
+    gap: 15px;
+  }
+  .next-project strong {
+    font-size: 19px;
+    font-weight: 500;
+  }
+  .next-project:hover {
+    color: var(--accent);
+  }
+  @media (max-width: 520px) {
+    .project-detail {
+      margin-top: 28px;
+    }
+    .detail-heading h1 {
+      font-size: 31px;
+    }
+    .detail-heading > p {
+      font-size: 13px;
+    }
+    .detail-tags {
+      gap: 9px;
+      font-size: 9px;
+    }
+    .detail-actions {
+      gap: 10px;
+    }
+    .detail-actions .button {
+      font-size: 11px;
+      padding: 10px 12px;
+    }
+    .feature-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .detail-section {
+      margin-top: 32px;
+    }
+    .detail-section h2 {
+      font-size: 21px;
+    }
+    .detail-section > p {
+      font-size: 13px;
+    }
+    .project-detail :global(.project-visual) {
+      height: 220px;
+    }
+    .detail-source-note {
+      font-size: 10px;
+    }
+    .source-list code {
+      font-size: 9px;
+    }
+  }
+</style>

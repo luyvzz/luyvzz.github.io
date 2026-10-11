@@ -2,7 +2,8 @@
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import Terminal from '../components/Terminal.astro';
-import { projects } from '../data/site';
+import Icon from '../components/Icon.astro';
+import { projects, profile, url } from '../data/site';
 ---
 
 <Base title="项目" active="projects" breadcrumb="projects">
@@ -12,11 +13,24 @@ import { projects } from '../data/site';
       做点有意思的东西<span class="heading-dot">.</span>
     </h1>
     <p>
-      把好奇心变成能看见、能使用的小作品。
+      从 AI 工作流到电子工程，把重复的步骤做成可以复用的工具。
       <br />
-      这里从这个网站和它的交互实验开始，慢慢更新。
+      这里记录我的开源项目、实现思路，以及它们适合解决的问题。
     </p>
-    <span class="page-count mono">02 PROJECTS / ALWAYS IN PROGRESS</span>
+    <div class="project-index-meta">
+      <span class="page-count mono">
+        {String(projects.length).padStart(2, '0')} OPEN-SOURCE PROJECTS
+      </span>
+      <a
+        class="text-link"
+        href={`${profile.github}?tab=repositories`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        全部 GitHub 仓库
+        <Icon name="external" size={16} />
+      </a>
+    </div>
   </section>
   <div class="project-grid">
     {projects.map((project) => (
@@ -24,8 +38,34 @@ import { projects } from '../data/site';
     ))}
   </div>
   <div class="build-note">
-    <span class="mono">// work in progress</span>
-    <p>新的项目还在路上。比起填满列表，我更想把每一个想法认真完成。</p>
+    <span class="mono">// this website is a project, too.</span>
+    <p>
+      这个小站也在持续构建：Astro 静态页面、Markdown 笔记，以及一点可玩的交互。
+      <a href={url('about/#this-site')}>了解这个网站 →</a>
+    </p>
   </div>
   <Terminal />
 </Base>
+<style>
+  .project-index-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 27px;
+  }
+  .project-index-meta .page-count {
+    margin-top: 0;
+  }
+  .build-note a {
+    color: var(--accent);
+    margin-left: 6px;
+  }
+  @media (max-width: 520px) {
+    .project-index-meta {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

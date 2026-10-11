@@ -24,14 +24,18 @@ npm run preview
 
 ## 编辑内容
 
-- `src/data/site.ts`：姓名、昵称、GitHub、简介、邮箱、项目和笔记索引。
+- `src/data/site.ts`：姓名、昵称、GitHub、简介、邮箱和笔记索引。
+- `src/data/projects.ts`：四个公开项目的介绍、技术栈、源码依据与首页精选标记。
+- `src/pages/projects/[id].astro`：自动生成各项目的独立介绍页。
 - `src/pages/index.astro`：首页文案。
 - `src/pages/about.astro`：个人介绍和近况。
 - `src/pages/notes/*.md`：Markdown 文章；复制现有文章并填写 frontmatter，然后更新笔记索引。
 - `src/styles/global.css`：主题、布局与响应式样式。
 - `src/scripts/terminal.ts`：模拟终端命令。
 
-当前两项作品是本网站与实际可用的终端实验，三篇文章明确标注为示例笔记。未提供邮箱，因此不显示虚构邮箱。上线前可换成自己的学习记录与项目。
+项目页展示 `ai-solo-toolkit`、`luyv_lceda_ai_demo`、`26-SKILL` 与 `vdmon`，介绍依据公开 README 和核心代码整理；首页精选前两项。详情页提供用途、功能、实现思路、适用环境，以及固定提交版本的源码链接。封面均为结构示意，不是产品截图或实测数据。
+
+三篇文章仍明确标注为示例笔记，后续可替换为个人学习记录。未提供邮箱，因此不显示虚构邮箱。
 
 ## 交互
 

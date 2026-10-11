@@ -1,0 +1,365 @@
+---
+interface Props {
+  variant: 'workflow' | 'eda' | 'telemetry' | 'desktop';
+  number: string;
+  type: string;
+}
+const { variant, number, type } = Astro.props;
+---
+
+<div class:list={['project-visual', `visual-${variant}`]} aria-hidden="true">
+  <span class="visual-label mono">
+    {type} / {number}
+  </span>
+  {variant === 'workflow' && (
+    <div class="workflow-sheet mono">
+      <div class="sheet-title">
+        <span>⑂</span> PROJECT MEMORY <i>●</i>
+      </div>
+      <div class="sheet-file">
+        <span>01</span>
+        <b>CLAUDE.md</b>
+        <small>context</small>
+      </div>
+      <div class="sheet-file">
+        <span>02</span>
+        <b>progress.md</b>
+        <small>handoff</small>
+      </div>
+      <div class="sheet-file">
+        <span>03</span>
+        <b>features.json</b>
+        <small>verify</small>
+      </div>
+      <div class="sheet-bottom">
+        think <span>→</span> build <span>→</span> verify <span>↺</span>
+      </div>
+    </div>
+  )}
+  {variant === 'eda' && (
+    <div class="eda-diagram">
+      <svg viewBox="0 0 320 155" fill="none">
+        <g stroke="currentColor" stroke-width="1.3">
+          <path d="M25 40h56l23 23h43M25 116h45l28-28h49M172 62h37l28-28h55M172 91h43l26 26h50" />
+          <path d="M128 38V18h35v20M130 113v23h37v-23" />
+          <rect x="107" y="40" width="87" height="70" rx="7" />
+          <path d="M97 52h10M97 66h10M97 80h10M97 94h10M194 52h10M194 66h10M194 80h10M194 94h10" />
+          <circle cx="25" cy="40" r="5" />
+          <circle cx="25" cy="116" r="5" />
+          <circle cx="292" cy="34" r="5" />
+          <circle cx="291" cy="117" r="5" />
+        </g>
+        <text
+          x="151"
+          y="82"
+          text-anchor="middle"
+          fill="currentColor"
+          font-size="23"
+          font-family="monospace"
+        >
+          AI
+        </text>
+        <text x="24" y="23" fill="currentColor" font-size="8" font-family="monospace">
+          SCHEMATIC
+        </text>
+        <text x="245" y="145" fill="currentColor" font-size="8" font-family="monospace">
+          PCB CONTEXT
+        </text>
+      </svg>
+      <span class="eda-caption mono">circuit context → assistant</span>
+    </div>
+  )}
+  {variant === 'telemetry' && (
+    <div class="telemetry-sheet mono">
+      <div class="sheet-title">
+        BALANCE / TELEMETRY <span>⌁</span>
+      </div>
+      <svg viewBox="0 0 270 65" fill="none">
+        <path
+          d="M0 33h270M45 0v65M90 0v65M135 0v65M180 0v65M225 0v65"
+          stroke="currentColor"
+          opacity=".12"
+        />
+        <path
+          d="M0 34 14 34 25 13 40 53 55 20 72 44 88 25 105 40 123 28 143 36 162 30 186 34 210 32 238 33 270 33"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+      </svg>
+      <div class="telemetry-stages">
+        <span>flash</span>
+        <i>→</i>
+        <span>capture</span>
+        <i>→</i>
+        <span>analyze</span>
+      </div>
+    </div>
+  )}
+  {variant === 'desktop' && (
+    <div class="desktop-diagram mono">
+      <div class="desktop-window window-back">
+        <div>
+          <i></i>
+          <span>RESEARCH</span>
+        </div>
+        <b></b>
+        <b></b>
+      </div>
+      <div class="desktop-window window-front">
+        <div>
+          <i></i>
+          <span>WORK</span>
+          <em>●</em>
+        </div>
+        <p>▤ &nbsp; Code</p>
+        <p>▤ &nbsp; Terminal</p>
+        <small>virtual desktop map</small>
+      </div>
+    </div>
+  )}
+  <span class="visual-footnote mono">
+    {variant === 'telemetry' ? '流程示意 · 非实测曲线' : 'PROJECT CONCEPT / 结构示意'}
+  </span>
+</div>
+<style>
+  .project-visual {
+    height: 205px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: var(--soft);
+    border-bottom: 1px solid var(--border);
+    color: var(--green);
+    isolation: isolate;
+    flex-shrink: 0;
+  }
+  .project-visual:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(currentColor 0.55px, transparent 0.6px);
+    background-size: 14px 14px;
+    opacity: 0.13;
+    z-index: -1;
+  }
+  .visual-label {
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    font-size: 8px;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+  }
+  .visual-footnote {
+    position: absolute;
+    bottom: 10px;
+    right: 14px;
+    font-size: 7px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+  .workflow-sheet {
+    width: 240px;
+    max-width: 76%;
+    padding: 13px 17px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    box-shadow: 6px 8px 0 color-mix(in srgb, var(--green) 10%, transparent);
+    transform: rotate(-3deg);
+    transition: transform 0.25s;
+    margin-top: 12px;
+  }
+  .sheet-title {
+    font-size: 8px;
+    letter-spacing: 0.9px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 9px;
+  }
+  .sheet-title > span {
+    color: var(--accent);
+  }
+  .sheet-title > i {
+    font-size: 6px;
+    margin-left: auto;
+    font-style: normal;
+  }
+  .sheet-file {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    font-size: 9px;
+    padding-top: 9px;
+  }
+  .sheet-file > span {
+    font-size: 7px;
+    color: var(--muted);
+  }
+  .sheet-file b {
+    font-weight: 400;
+  }
+  .sheet-file small {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 7px;
+  }
+  .sheet-bottom {
+    font-size: 7px;
+    color: var(--muted);
+    border-top: 1px dashed var(--border);
+    padding-top: 8px;
+    margin-top: 9px;
+  }
+  .sheet-bottom span {
+    color: var(--accent);
+    padding: 0 5px;
+  }
+  .visual-eda {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .eda-diagram {
+    width: 290px;
+    max-width: 86%;
+    margin-top: 16px;
+  }
+  .eda-diagram svg {
+    width: 100%;
+    height: 130px;
+  }
+  .eda-caption {
+    font-size: 8px;
+    display: block;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+  .visual-telemetry {
+    color: #e0bd8d;
+    background: #30392e;
+  }
+  .visual-telemetry .visual-label,
+  .visual-telemetry .visual-footnote {
+    color: #bcc5b4;
+  }
+  .telemetry-sheet {
+    width: 270px;
+    max-width: 78%;
+    margin-top: 9px;
+  }
+  .telemetry-sheet .sheet-title {
+    border-color: #ffffff20;
+    font-size: 8px;
+    justify-content: space-between;
+  }
+  .telemetry-sheet svg {
+    width: 100%;
+    height: 75px;
+    margin: 10px 0;
+  }
+  .telemetry-stages {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 8px;
+    color: #d2dcc8;
+  }
+  .telemetry-stages i {
+    font-style: normal;
+    color: #829875;
+  }
+  .desktop-diagram {
+    position: relative;
+    width: 235px;
+    max-width: 78%;
+    height: 145px;
+    margin-top: 21px;
+  }
+  .desktop-window {
+    position: absolute;
+    width: 164px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    box-shadow: 0 5px 20px #00000008;
+    padding: 10px 12px;
+    font-size: 8px;
+  }
+  .desktop-window > div {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 7px;
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+  .desktop-window i {
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .desktop-window em {
+    margin-left: auto;
+    font-size: 6px;
+    font-style: normal;
+  }
+  .desktop-window p {
+    padding-top: 8px;
+    color: var(--text);
+    font-size: 9px;
+  }
+  .desktop-window small {
+    display: block;
+    margin-top: 11px;
+    font-size: 6px;
+    color: var(--muted);
+  }
+  .window-back {
+    top: 0;
+    right: 0;
+    transform: rotate(6deg);
+    height: 96px;
+    background: var(--bg);
+  }
+  .window-back b {
+    display: block;
+    width: 70%;
+    height: 4px;
+    background: var(--border);
+    margin-top: 12px;
+  }
+  .window-front {
+    left: 0;
+    top: 23px;
+    transform: rotate(-3deg);
+  }
+  :global(.project-card:hover) .workflow-sheet {
+    transform: rotate(0) translateY(-3px);
+  }
+  @media (max-width: 1000px) and (min-width: 761px) {
+    .workflow-sheet {
+      max-width: 87%;
+      padding: 12px;
+    }
+    .sheet-file {
+      gap: 7px;
+    }
+    .sheet-file small {
+      display: none;
+    }
+    .project-visual {
+      height: 185px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .workflow-sheet {
+      transition: none;
+    }
+  }
+</style>

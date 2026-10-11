@@ -31,9 +31,9 @@ import { profile, projects, url } from '../data/site';
           <span class="hero-period">.</span>
         </h1>
         <p class="hero-description">
-          一名热爱技术与开发的大学生。
+          山东科技大学 · 电子信息工程。
           <br />
-          在代码里探索，在实践中成长，偶尔折腾点有趣的东西。
+          探索 AI Agent、嵌入式与 EDA，让工程经验变成好用的工具。
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href={url('projects/')}>
@@ -86,7 +86,7 @@ import { profile, projects, url } from '../data/site';
     <span class="now-label mono">
       <span class="status-dot"></span>NOW
     </span>
-    <p>正在把这个小站，从一个想法变成自己的数字空间。</p>
+    <p>围绕 AI 与电子工程，整理能运行、能交接、能复用的开源工具。</p>
     <a href={url('about/#now')} aria-label="查看我的近况">
       <Icon name="arrow" size={18} />
     </a>
@@ -105,9 +105,11 @@ import { profile, projects, url } from '../data/site';
       </a>
     </div>
     <div class="project-grid">
-      {projects.map((project) => (
-        <ProjectCard project={project} />
-      ))}
+      {projects
+        .filter((project) => project.featured)
+        .map((project) => (
+          <ProjectCard project={project} />
+        ))}
     </div>
   </section>
   <section class="notes-section" aria-labelledby="notes-title">

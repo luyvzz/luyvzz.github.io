@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant: 'workflow' | 'eda' | 'telemetry' | 'desktop';
+  variant: 'workflow' | 'eda' | 'telemetry' | 'desktop' | 'mcu';
   number: string;
   type: string;
 }
@@ -33,6 +33,31 @@ const { variant, number, type } = Astro.props;
       </div>
       <div class="sheet-bottom">
         think <span>→</span> build <span>→</span> verify <span>↺</span>
+      </div>
+    </div>
+  )}
+  {variant === 'mcu' && (
+    <div class="workflow-sheet mono">
+      <div class="sheet-title">
+        <span>⌘</span> MCU LEARNING <i>●</i>
+      </div>
+      <div class="sheet-file">
+        <span>01</span>
+        <b>CT107D / C51</b>
+        <small>board</small>
+      </div>
+      <div class="sheet-file">
+        <span>29</span>
+        <b>实验索引</b>
+        <small>explore</small>
+      </div>
+      <div class="sheet-file">
+        <span>03</span>
+        <b>学习路径</b>
+        <small>practice</small>
+      </div>
+      <div class="sheet-bottom">
+        learn <span>→</span> build <span>→</span> debug
       </div>
     </div>
   )}

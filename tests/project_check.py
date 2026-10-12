@@ -24,16 +24,16 @@ with sync_playwright() as p:
         assert response and response.status == 200, path
 
     visit('')
-    expect(page.locator('.project-card')).to_have_count(2)
+    expect(page.locator('.project-card')).to_have_count(sum(item['featured'] for item in projects))
     expect(page.locator('.hero-description')).to_contain_text('电子信息工程')
     page.locator('.project-card').first.click()
     expect(page).to_have_url(urljoin(base, 'projects/ai-solo-toolkit/'))
     page.get_by_role('link', name='返回全部项目').click()
     expect(page).to_have_url(urljoin(base, 'projects/'))
-    expect(page.locator('.project-card')).to_have_count(4)
-    expect(page.locator('.page-count')).to_contain_text('04 OPEN-SOURCE PROJECTS')
+    expect(page.locator('.project-card')).to_have_count(len(projects))
+    expect(page.locator('.page-count')).to_contain_text(f'{len(projects):02d} OPEN-SOURCE PROJECTS')
     page.screenshot(path=str(out / 'projects-desktop.png'), full_page=True)
-    checks.append('首页精选两项、项目列表四项、卡片跳转与返回')
+    checks.append('首页精选两项、项目列表五项、卡片跳转与返回')
 
     for index, project in enumerate(projects):
         path = f"projects/{project['id']}/"
@@ -52,7 +52,7 @@ with sync_playwright() as p:
         expected_next = projects[(index + 1) % len(projects)]['id']
         page.locator('.next-project').click()
         expect(page).to_have_url(urljoin(base, f'projects/{expected_next}/'))
-    checks.append('四个详情页、功能介绍、GitHub 入口与固定版本源码文件')
+    checks.append('五个详情页、功能介绍、GitHub 入口与固定版本源码文件')
 
     visit('projects/lceda-ai-assistant/')
     expect(page.locator('.detail-tags')).to_contain_text('实验性扩展')

@@ -7,7 +7,7 @@ export interface Project {
   tags: string[];
   type: string;
   status: string;
-  preview: 'workflow' | 'eda' | 'telemetry' | 'desktop';
+  preview: 'workflow' | 'eda' | 'telemetry' | 'desktop' | 'mcu';
   featured: boolean;
   repository: string;
   revision: string;
@@ -20,6 +20,53 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: 'mcu-ai-assistant',
+    number: '05',
+    title: '单片机教学辅助智能体',
+    repoName: 'mcu-ai-assistant',
+    description:
+      '围绕 CT107D 竞赛板，把 29 项实验索引、C51 知识、学习路径和常见问题整理成一个学习工作台。',
+    tags: ['Python', 'Gradio', 'C51'],
+    type: '嵌入式学习工具',
+    status: '本地问答原型',
+    preview: 'mcu',
+    featured: false,
+    repository: 'https://github.com/luyvzz/mcu-ai-assistant',
+    revision: 'd9c016f8b185cfe41a20209b77cffe3082e15ef7',
+    tagline: '从点亮一盏 LED，到建立自己的单片机学习路径。',
+    problem:
+      '学习单片机时，开发板说明、实验目标、代码和排错经验常常散落在不同资料中。这个项目以 CT107D 蓝桥杯竞赛板为线索，将学习内容整理到同一个 Gradio 界面，方便按自己的进度查阅与实践。',
+    features: [
+      {
+        title: '29 项实验索引',
+        description: '按分类与难度筛选实验，查看目标、跳线设置、实验现象、关键知识点与代码解读。',
+      },
+      {
+        title: '开发板与知识库',
+        description:
+          '集中介绍板卡外设，并整理 C51、通信协议、外设驱动和调试基础；模块图片采用示意图。',
+      },
+      {
+        title: '三条学习路径',
+        description: '按零基础入门、进阶提升、竞赛备赛组织学习步骤，连接对应实验内容。',
+      },
+      {
+        title: '离线常见问题速查',
+        description:
+          '根据 LED、按键、定时器、串口等关键词返回预设回答，无需 API Key，不消耗模型额度。',
+      },
+    ],
+    implementation:
+      'Python 按开发板、实验、知识、路径、问答和资源拆分模块，Gradio 负责界面与交互，JSON 保存结构化教学内容。问答目前采用关键词规则，尚未接入大模型；预留密钥配置仅从服务端环境变量读取。',
+    requirements:
+      '需要 Python 3.11 或 3.12，在本机启动 Gradio。此页为项目展示，GitHub Pages 不运行 Python 后端。公开仓库不附带本地教材、原理图与配套实验源文件；安装板卡例程后可浏览实验代码。教学示例需结合实际板卡核对。',
+    sources: [
+      { path: 'app.py', label: 'Gradio 学习工作台' },
+      { path: 'modules/qa_agent.py', label: '本地问答与快捷问题' },
+      { path: 'data/experiments.json', label: '结构化实验索引' },
+    ],
+  },
   {
     id: 'ai-solo-toolkit',
     number: '01',
